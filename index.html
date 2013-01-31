@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="http://www.turnjs.com/css/jquery.ui.css">
+<link type="text/css" rel="stylesheet" href="http://www.turnjs.com/css/default.css">
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+<script type="text/javascript" src="http://www.turnjs.com/lib/hash.js"></script>
+<script type="text/javascript" src="http://www.turnjs.com/lib/turn.min.js"></script>
+<script type="text/javascript" src="http://www.turnjs.com/lib/zoom.min.js"></script>
+<style>
+#wrapper {
+    padding-top:100px;
+    margin:auto;
+	width:400px;
+	height:300px;
+}
+
+.sample-flipbook{
+	width:400px;
+	height:200px;
+	-webkit-transition:margin-left 0.2s;
+	-moz-transition:margin-left 0.2s;
+	-ms-transition:margin-left 0.2s;
+	-o-transition:margin-left 0.2s;
+	transition:margin-left 0.2s;
+}
+
+.sample-flipbook .page{
+	width:200px;
+	height:200px;
+	background-color:white;
+	line-height:300px;
+	font-size:20px;
+}
+
+.sample-flipbook .page-wrapper{
+	-webkit-perspective:2000px;
+	-moz-perspective:2000px;
+	-ms-perspective:2000px;
+	-o-perspective:2000px;
+	perspective:2000px;
+}
+
+.sample-flipbook .hard{
+	background:#ccc !important;
+	color:#333;
+	-webkit-box-shadow:inset 0 0 5px #666;
+	-moz-box-shadow:inset 0 0 5px #666;
+	-o-box-shadow:inset 0 0 5px #666;
+	-ms-box-shadow:inset 0 0 5px #666;
+	box-shadow:inset 0 0 5px #666;
+	font-weight:bold;
+}
+
+.sample-flipbook .odd{
+	background:-webkit-gradient(linear, right top, left top, color-stop(0.95, #FFF), color-stop(1, #DADADA));
+	background-image:-webkit-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+	background-image:-moz-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+	background-image:-ms-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+	background-image:-o-linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+	background-image:linear-gradient(right, #FFF 95%, #C4C4C4 100%);
+	-webkit-box-shadow:inset 0 0 5px #666;
+	-moz-box-shadow:inset 0 0 5px #666;
+	-o-box-shadow:inset 0 0 5px #666;
+	-ms-box-shadow:inset 0 0 5px #666;
+	box-shadow:inset 0 0 5px #666;
+}
+
+.sample-flipbook .even{
+	background:-webkit-gradient(linear, left top, right top, color-stop(0.95, #fff), color-stop(1, #dadada));
+	background-image:-webkit-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:-moz-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:-ms-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:-o-linear-gradient(left, #fff 95%, #dadada 100%);
+	background-image:linear-gradient(left, #fff 95%, #dadada 100%);
+	-webkit-box-shadow:inset 0 0 5px #666;
+	-moz-box-shadow:inset 0 0 5px #666;
+	-o-box-shadow:inset 0 0 5px #666;
+	-ms-box-shadow:inset 0 0 5px #666;
+	box-shadow:inset 0 0 5px #666;
+}
+
+#flipbook {
+    text-align: center;
+    font-family: "helvetica neue", helvetica, arial;
+}
+
+img {
+    width: 200px; 
+}
+
+</style>
+</head>
+<body>
+<div id="wrapper">
+<div id="flipbook" class="sample-flipbook">
+</div>
+</div>
+<script type="text/javascript">
+    // get json data of images, assume json file is images.json
+    // construct dom elements
+    
+    var book = $('#flipbook');
+    book.append('<div class="hard">Only You</div>');
+    book.append('<div class="hard"></div>');
+    $.getJSON('images.json', function(data) {
+        $.each(data, function(key, val) {
+           book.append('<div><img src="' + val + '"></div></li>');
+        });
+        book.append('<div class="hard"></div>');
+        book.append('<div class="hard"></div>');
+    
+	$("#flipbook").turn({
+		width: 400,
+		height: 300,
+		autoCenter: true
+	});
+	    });
+
+</script>
+</body>
+</html>
