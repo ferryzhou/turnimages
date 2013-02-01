@@ -109,8 +109,8 @@ background-position: left top;
 
 $(window).load(function() {
 
-var page_width = 480;
-var page_height = 320;
+var page_width = 600;
+var page_height = 450;
 var book_width = page_width * 2;
 
 var book = $('#flipbook');
@@ -120,7 +120,8 @@ book.append('<div class="hard"></div>');
   $.each(images, function(key, val) {
     book.append('<div><img src="' + val + '"></div></li>');
   });
-  book.append('<div class="hard"></div>');
+  if (images.length % 2 != 0) { book.append('<div></div>');  }
+  book.append('<div class="hard"></div>'); 
   book.append('<div class="hard">Yours truly</div>');
   
   $('#wrapper').css('width', book_width + 'px');
@@ -154,9 +155,6 @@ book.append('<div class="hard"></div>');
 		width = width * ratio;    // Reset width to match scaled image
 	}
   });
-
-  //$('img').css('max-width', page_width);
-  //$('img').css('max-height', page_height);
 
   $("#flipbook").turn({
     width: book_width,
