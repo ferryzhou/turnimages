@@ -3,6 +3,6 @@
 require 'json'
 
 imgdir = ARGV[0] || '.'
-str = Dir.glob(File.join(imgdir, '*.jpg')).to_json
+str = Dir.glob(File.join(imgdir, '*.{jpg,JPG,gif,GIF}')).to_json
 p str
-File.open('images2.json', 'w') {|f| f.write(str) }
+File.open('images.js', 'w') {|f| f.write("var images=#{str};") }

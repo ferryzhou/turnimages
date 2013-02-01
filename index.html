@@ -9,6 +9,7 @@
 <script type="text/javascript" src="http://www.turnjs.com/lib/hash.js"></script>
 <script type="text/javascript" src="http://www.turnjs.com/lib/turn.min.js"></script>
 <script type="text/javascript" src="http://www.turnjs.com/lib/zoom.min.js"></script>
+<script type="text/javascript" src="images.js"></script>
 <style>
 #wrapper {
     padding-top:100px;
@@ -106,7 +107,7 @@ background-position: left top;
 </div>
 <script type="text/javascript">
 
-$(function() {
+$(window).load(function() {
 
 var page_width = 480;
 var page_height = 320;
@@ -115,8 +116,8 @@ var book_width = page_width * 2;
 var book = $('#flipbook');
 book.append('<div class="hard">Only You</div>');
 book.append('<div class="hard"></div>');
-$.getJSON('images.json', function(data) {
-  $.each(data, function(key, val) {
+
+  $.each(images, function(key, val) {
     book.append('<div><img src="' + val + '"></div></li>');
   });
   book.append('<div class="hard"></div>');
@@ -162,7 +163,6 @@ $.getJSON('images.json', function(data) {
     height: page_height,
     autoCenter: true
   });
-});
 
 });
 
