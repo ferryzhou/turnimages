@@ -9,6 +9,7 @@
 <script type="text/javascript" src="http://www.turnjs.com/lib/hash.js"></script>
 <script type="text/javascript" src="http://www.turnjs.com/lib/turn.min.js"></script>
 <script type="text/javascript" src="http://www.turnjs.com/lib/zoom.min.js"></script>
+<script type="text/javascript" src="jquery.waitforimages.min.js"></script>
 <script type="text/javascript" src="images.js"></script>
 <style>
 #wrapper {
@@ -107,22 +108,23 @@ background-position: left top;
 </div>
 <script type="text/javascript">
 
+var book = $('#flipbook');
+book.append('<div class="hard">Only You</div>');
+book.append('<div class="hard"></div>');
+
+$.each(images, function(key, val) {
+    book.append('<div><img src="' + val + '"></div></li>');
+});
+if (images.length % 2 != 0) { book.append('<div></div>');  }
+book.append('<div class="hard"></div>'); 
+book.append('<div class="hard">Yours truly</div>');
+
 $(window).load(function() {
 
 var page_width = 600;
 var page_height = 450;
 var book_width = page_width * 2;
 
-var book = $('#flipbook');
-book.append('<div class="hard">Only You</div>');
-book.append('<div class="hard"></div>');
-
-  $.each(images, function(key, val) {
-    book.append('<div><img src="' + val + '"></div></li>');
-  });
-  if (images.length % 2 != 0) { book.append('<div></div>');  }
-  book.append('<div class="hard"></div>'); 
-  book.append('<div class="hard">Yours truly</div>');
   
   $('#wrapper').css('width', book_width + 'px');
   $('#wrapper').css('height', page_height + 50 + 'px');
